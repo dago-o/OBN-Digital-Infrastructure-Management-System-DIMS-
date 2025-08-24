@@ -17,11 +17,38 @@ This repository contains the **frontend** built using **React + Vite**.
 - 📷 QR Code Device Info
 - 📱 Responsive Design
 ## 🖼️ Screenshots
-### 🔧 Admin Dashboard
-![Admin Dashboard](./screenshots/dashboard.png)
+### 🔧 Home Page
+![Home Page](./screenshots/homepage.png)
 
-### 📋 Devices Table
-![Devices Table](./screenshots/devices-list.png)
+### 📋 Login Page
+![Login Page](./screenshots/login.png)
+
+### 🔧 Device Detail
+![Device Detail](./screenshots/manipulatedev.png)
+
+### 📋 Users Page
+![Users Page](./screenshots/users.png)
+
+### 🔧 Report Dashboard
+![Report Dashboard](./screenshots/report.png)
+
+### 📋 Enginer Device Page
+![Devices Page](./screenshots/devineng.png)
+
+### 🔧 QRCode of Device
+![QR Code](./screenshots/qrcode.png)
+
+### 🔧 Notifications Page
+![Notification Page](./screenshots/notifications.png)
+
+### 📋 Announcements Page
+![Announcements Page](./screenshots/announccementas.png)
+
+### 🔧 Issue Report Page
+![Report Issue Page](./screenshots/issuereport.png)
+
+### 📋 Track Your Issues
+![Track your Issue Page](./screenshots/trackyourissue.png)
 
 
 ---
@@ -58,7 +85,7 @@ The app will be available at: http://localhost:5173
 ## 🔗 Connecting to Backend (PHP API)
 The backend for ODIMS is built using PHP and should be cloned and placed in your server root (e.g. htdocs for XAMPP).
 
-Backend Repository: https://github.com/your-username/odims-backend
+Backend Repository: https://github.com/dago-o/OBN-DIMS-backend.git
 
 ### 📁 1. Clone backend repo
 ⚠️ Important:
@@ -66,7 +93,7 @@ Make sure you have folder path like below in the htdocs folder:
 "C:\xampp\htdocs\projects_and_practices\projects\OBN_project"
 
 cd C:\xampp\htdocs\projects_and_practices\projects\OBN_project
-git clone https://github.com/dago-o/OBN-DIMS-backend-.git
+git clone https://github.com/dago-o/OBN-DIMS-backend.git
 
 ### 2. Setup database
 
@@ -79,6 +106,8 @@ Update the database credentials in your backend PHP files (connection.php or con
 ### 3. Start Apache and MySQL (XAMPP)
 
 Ensure XAMPP (or your server) is running so that the frontend can send requests to the backend.
+
+### Check the Backend Repository for the Detail steps
 
 
 👨‍💻 Author
