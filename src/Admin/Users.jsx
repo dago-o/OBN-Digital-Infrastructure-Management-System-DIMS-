@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import AdminLayout from './Adminlayout';
 
@@ -11,6 +11,7 @@ const Users = () => {
   const [phone, setPhone] = useState('');
   const [role, setRole] = useState('admin');
   const [editingUserId, setEditingUserId] = useState(null);
+  const inputref=useRef();
 
   // Fetch users from backend
   const fetchUsers = async () => {
@@ -23,6 +24,7 @@ const Users = () => {
   };
 
   useEffect(() => {
+    inputref.current.focus();
     fetchUsers();
   }, []);
 
@@ -95,7 +97,7 @@ const Users = () => {
     <div className="p-4 max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">{editingUserId ? 'Edit User' : 'Add User'}</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-100 p-4 rounded-lg shadow-md">
-        <input className="border p-2" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input ref={inputref} className="border p-2" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
         <input className="border p-2" type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
         <input className="border p-2" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required={!editingUserId} />
         <input className="border p-2" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -133,8 +135,8 @@ const Users = () => {
               <td className="border px-4 py-2 hover:bg-gray-300">{user.phone}</td>
               <td className="border px-4 py-2 capitalize hover:bg-gray-300">{user.role.replace('_', ' ')}</td>
               <td className="border px-8 flex py-2 space-x-2">
-                <button onClick={() => handleEdit(user.id)} className="bg-blue-600 px-4 py-1 rounded cursor-pointer text-white hover:bg-blue-700">Edit</button>
-                <button onClick={() => handleDelete(user.id)} className="bg-red-600 px-2 py-1 rounded cursor-pointer text-white hover:bg-red-700">Delete</button>
+                <button onClick={() => handleEdit(user.id)} className="bg-blue-600 px-4 py-3 rounded cursor-pointer text-white hover:bg-blue-700">Edit</button>
+                <button onClick={() => handleDelete(user.id)} className="bg-red-600 px-2 py-3 rounded cursor-pointer text-white hover:bg-red-700">Delete</button>
               </td>
             </tr>
           ))}

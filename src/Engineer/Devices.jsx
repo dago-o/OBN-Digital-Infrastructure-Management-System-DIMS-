@@ -1,14 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
-import Adddevice from "./Adddevice";
-import AdminLayout from "./Adminlayout";
+import { useRef } from "react";
+import Engineerlayout from "./Engineerlayout";
 
 function Devices() {
   const [datas, setDatas] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDevice, setSelectedDevice] = useState(null);
-  const [deviceToEdit, setDeviceToEdit] = useState(null);
+  const [showQR, setShowQR] = useState(false);
+  
+
+  const qrRef = useRef(); // Add this
+
 
   // Fetch devices from backend
   const fetchDevices = () => {
@@ -28,33 +32,34 @@ function Devices() {
     device.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this device?")) {
-      axios
-        .post("http://localhost/projects_and_practices/projects/OBN_project/deletedevice.php", { id })
-        .then((res) => {
-          alert("Device deleted successfully.");
-          setDatas((prev) => prev.filter((d) => d.id !== id));
-          setSelectedDevice(null);
-        })
-        .catch((err) => {
-          console.error("Error deleting device:", err);
-          alert("Failed to delete device.");
-        });
-    }
-  };
 
-  // Called after add/edit to refresh list and close form
-  const handleDeviceFormSubmit = () => {
-    fetchDevices();
-    setDeviceToEdit(null);
-    setSelectedDevice(null);
-  };
+  //handle print function
+  const handlePrint = () => {
+  const printContent = qrRef.current.innerHTML;
+  const printWindow = window.open("", "_blank");
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Print QR Code</title>
+        <style>
+          body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+          }
+        </style>
+      </head>
+      <body onload="window.print(); window.close();">
+        ${printContent}
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
+};
 
- 
 
   return (
-    <AdminLayout>
+    <Engineerlayout>
     <div className="p-6">
       <div className="mb-4 flex justify-between items-center">
         <input
@@ -64,27 +69,14 @@ function Devices() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="px-4 py-2 rounded w-1/3 border-2 border-gray-400 focus:outline-none focus:border-blue-500"
         />
-        <button
-          onClick={() => setDeviceToEdit({})}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 hover:cursor-pointer"
-        >
-          Add Device
-        </button>
+        
       </div>
 
-      {/* Device Form (Add/Edit) */}
-      {deviceToEdit !== null && (
-        <Adddevice
-          deviceToEdit={Object.keys(deviceToEdit).length ? deviceToEdit : null}
-          onSubmit={handleDeviceFormSubmit}
-          onClose={() => setDeviceToEdit(null)}
-        />
-      )}
+     
 
       {/* Device Cards */}
-      {
+       {
         filteredDevices.length > 0 ?(
-      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredDevices.map((device) => (
           <div
@@ -101,12 +93,12 @@ function Devices() {
                 />
               )}
               <h3 className="text-lg font-semibold">{device.name}</h3>
-              {/* <p className="text-gray-600">{device.model}</p> */}
+         
             </div>
           </div>
-        ))} 
+        ))}
       </div>
-        ) :(
+      ) :(
         <div className="text-center text-gray-500 text-lg mt-10">
           🚫 No products found matching{" "}
           <span className="font-semibold">"{searchTerm}"</span>
@@ -153,33 +145,60 @@ function Devices() {
               </div>
              
               <div className="flex flex-wrap gap-2 mt-2 ">
-                <button
-                  onClick={() => {
-                    setDeviceToEdit(selectedDevice);
-                    setSelectedDevice(null);
-                  }}
-                  className="bg-blue-700 text-white px-12 py-2 rounded hover:bg-yellow-600 cursor-pointer"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => {
-                    handleDelete(selectedDevice.id);
-                    setSelectedDevice(null);
-                  }}
-                  className="bg-red-600 cursor-pointer text-white px-12 py-2 rounded hover:bg-red-700"
-                >
-                  Delete
-                </button>
                
+                <button
+                  onClick={() => setShowQR(true)}
+                  className="bg-blue-600 text-white cursor-pointer px-32 py-2 rounded hover:bg-blue-700"
+                >
+                  Show QR
+                </button>
               </div>
             </div>
             
+            {/* QR Modal inside Details Modal */}
+            {showQR && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+                <div ref={qrRef} className="bg-white p-6 rounded shadow-lg ">
+                  <h3 className="mb-4 text-lg font-semibold">
+                    {selectedDevice.name} QR Code
+                  </h3>
+                   <QRCode value={ `
+                                      Device ID: ${selectedDevice.id}
+                                      Device Name: ${selectedDevice.name}
+                                      Device Model: ${selectedDevice.model}
+                                      Device Serial Number: ${selectedDevice.serial_number}
+                                      Device Location: ${selectedDevice.location}
+                                      Device Status: ${selectedDevice.status}
+                  
+                  
+                                     `
+                                    } />
+                    <div className="flex flex-wrap gap-2 mt-2" >
+                      <button
+                    onClick={() => setShowQR(false)}
+                    className="mt-4 px-12 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                  >
+                    Close
+                  </button>
+
+                  <button
+                 onClick={handlePrint}
+                className="mt-4 px-12 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+>
+                   Print
+                </button>
+
+                    </div>
+                  
+
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
     </div>
-     </AdminLayout>
+     </Engineerlayout>
   );
 }
 

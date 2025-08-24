@@ -16,7 +16,11 @@ function Login() {
       })
       .then((response) => {
         if (response.data.success) {
-          const role = response.data.role; 
+          // const role = response.data.role; 
+          const { role, user_id } = response.data;
+
+          // Store user info in localStorage
+  localStorage.setItem('user', JSON.stringify({ user_id, role }));
           if (role === 'admin') {
             navigate('/admin/dashboard');
           }

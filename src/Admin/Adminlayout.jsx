@@ -23,9 +23,10 @@ function AdminLayout({ children }) {
             <li onClick={() => navigate('/admin/users')} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">
               <FaUsers /> Users
             </li>
-            <li onClick={() => navigate('/admin/report')} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">
-              <FaFileAlt /> Report
+            <li onClick={() => navigate('/admin/admindashboard')} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">
+              <FaFileAlt /> Dashboard
             </li>
+
           </ul>
         </nav>
       </aside>

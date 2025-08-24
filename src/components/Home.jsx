@@ -19,16 +19,12 @@ function Home() {
             <li>
               <a href="#about" className="hover:underline text-blue-600 hover:text-blue-700 font-semibold">About Us</a>
             </li>
-            {/* <li>
-              <button className="hover:underline text-blue-600 font-semibold hover:text-blue-700 cursor-pointer" onClick={()=>navigate('/report')}>Report</button>
-            </li> */}
+          
             <li>
               <button className="hover:underline text-blue-600 font-semibold hover:text-blue-700 cursor-pointer" onClick={()=> navigate('/login')}>Login</button>
             </li>
 
-             {/* <li>
-              <button className="hover:underline text-blue-600 font-semibold hover:text-blue-700 cursor-pointer" onClick={()=> navigate('/users')}>Users</button>
-            </li> */}
+    
 
           </ul>
         </nav>
