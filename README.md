@@ -18,7 +18,7 @@ This repository contains the **frontend** built using **React + Vite**.
 - 📱 Responsive Design
 ## 🖼️ Screenshots
 ### 🔧 Home Page
-![Home Page](./screenshots/homepage.png)
+![Home Page](src/screenshots/homepage.png)
 
 ### 📋 Login Page
 ![Login Page](./screenshots/login.png)
