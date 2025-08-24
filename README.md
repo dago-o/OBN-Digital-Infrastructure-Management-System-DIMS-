@@ -1,12 +1,96 @@
-# React + Vite
+# 🖥️ OBN Digital Infrastructure Management System (ODIMS) – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ODIMS is a web-based inventory and device management system designed for Oromia Broadcasting Network (OBN). It helps manage devices, track inventory status, generate reports, and assign roles such as Admin and Engineer.
 
-Currently, two official plugins are available:
+This repository contains the **frontend** built using **React + Vite**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📂 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 Role-based Access (Admin, Engineer, End-User)
+- 📋 Device Registration and Inventory Tracking
+- 🛠️ Engineer and End-user Issue Reporting
+- 🧾 Report Generation (Printable + Exportable)
+- 📢 Announcements and Notifications
+- 🎯 Dashboard with Statistics and Search
+- 📷 QR Code Device Info
+- 📱 Responsive Design
+## 🖼️ Screenshots
+### 🔧 Admin Dashboard
+![Admin Dashboard](./screenshots/dashboard.png)
+
+### 📋 Devices Table
+![Devices Table](./screenshots/devices-list.png)
+
+
+---
+
+## ⚙️ Technologies Used
+
+- **Frontend**: React, Vite, JavaScript
+- **Styling**: Bootstrap, Tailwind (optional), Custom CSS
+- **Printing/Export**: `window.print`
+- **Backend**: PHP + MySQL (in separate repo)
+- **QR Code**: `qrcode.react`
+
+---
+
+## 🚀 Getting Started (Clone & Run Locally)
+
+### 📁 1. Clone this repository
+
+```bash
+git clone https://github.com/dago-o/OBN-Digital-Infrastructure-Management-System-DIMS-.git
+cd OBN-Digital-Infrastructure-Management-System-DIMS-
+
+
+### 📦 2. Install dependencies
+
+Make sure you have Node.js and npm installed.
+npm install
+
+### 🏃 3. Run the development server
+npm run dev
+The app will be available at: http://localhost:5173
+
+
+## 🔗 Connecting to Backend (PHP API)
+The backend for ODIMS is built using PHP and should be cloned and placed in your server root (e.g. htdocs for XAMPP).
+
+Backend Repository: https://github.com/your-username/odims-backend
+
+### 📁 1. Clone backend repo
+⚠️ Important:
+Make sure you have folder path like below in the htdocs folder:
+"C:\xampp\htdocs\projects_and_practices\projects\OBN_project"
+
+cd C:\xampp\htdocs\projects_and_practices\projects\OBN_project
+git clone https://github.com/dago-o/OBN-DIMS-backend-.git
+
+### 2. Setup database
+
+Create a MySQL database (e.g. obn_dims)
+
+Import the provided .sql file into phpMyAdmin
+
+Update the database credentials in your backend PHP files (connection.php or config.php)
+
+### 3. Start Apache and MySQL (XAMPP)
+
+Ensure XAMPP (or your server) is running so that the frontend can send requests to the backend.
+
+
+👨‍💻 Author
+
+Degefa Lemma Gadisa
+Developer & Designer
+Oromia Broadcasting Network (OBN)
+
+🤝 Contributions
+
+Contributions are welcome!
+Please open an issue or pull request to suggest improvements or bug fixes.
+
+
+
