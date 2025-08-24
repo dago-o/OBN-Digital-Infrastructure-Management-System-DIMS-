@@ -21,34 +21,36 @@ This repository contains the **frontend** built using **React + Vite**.
 ![Home Page](src/screenshots/homepage.png)
 
 ### 📋 Login Page
-![Login Page](./screenshots/login.png)
+![Login Page](src/screenshots/login.png)
 
 ### 🔧 Device Detail
-![Device Detail](./screenshots/manipulatedev.png)
+![Device Detail](src/screenshots/manipulatedev.png)
 
 ### 📋 Users Page
-![Users Page](./screenshots/users.png)
+![Users Page](src/screenshots/users.png)
 
 ### 🔧 Report Dashboard
-![Report Dashboard](./screenshots/report.png)
+![Report Dashboard](src/screenshots/report.png)
 
 ### 📋 Enginer Device Page
-![Devices Page](./screenshots/devineng.png)
+![Devices Page](src/screenshots/devineng.png)
 
 ### 🔧 QRCode of Device
-![QR Code](./screenshots/qrcode.png)
+![QR Code](src/screenshots/qrcode.png)
 
 ### 🔧 Notifications Page
-![Notification Page](./screenshots/notifications.png)
+![Notification Page](src/screenshots/notifications.png)
 
 ### 📋 Announcements Page
-![Announcements Page](./screenshots/announccementas.png)
+![Announcements Page](src/screenshots/announccementas.png)
 
 ### 🔧 Issue Report Page
-![Report Issue Page](./screenshots/issuereport.png)
+![Report Issue Page](src/screenshots/issuereport.png)
 
 ### 📋 Track Your Issues
-![Track your Issue Page](./screenshots/trackyourissue.png)
+![Track your Issue Page](src/screenshots/trackyourissue.png)
+
+### More system interfaces are found beyond that.
 
 
 ---
